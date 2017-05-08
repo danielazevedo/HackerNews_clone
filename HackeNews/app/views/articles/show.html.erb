@@ -22,18 +22,20 @@
   <%= @article.numberComments %>
 </p>
  
-<p>
-  <strong>Votes:</strong>
-  <%= @article.votes %>
-</p>
-
+<h2>Votes</h2>
+<%= render @article.votes%>
 
 <h2>Comments</h2>
 <%= render @article.comments %>
 
+
 <% if session[:user_id] != nil%>
 	<h2>Add a comment:</h2>
 	<%= render 'comments/form' %>
+	<h2>Add UpVote</h2>
+	<%= render 'vote/form' %>
 <% end %>
 
-<!--%= link_to 'Edit', edit_article_path(@article) %--><%= link_to 'Back', articles_path %>
+<!--%= link_to 'Edit', edit_article_path(@article) %-->
+<!--%= link to 'Vote', new_article_vote_path %-->
+<%= link_to 'Back', articles_path %>

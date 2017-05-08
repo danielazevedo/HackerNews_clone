@@ -9,7 +9,7 @@ Rails.application.routes.draw do
  
   get 'hacker_contrl/index'
   resources :articles do
-    resources :comments
+    resources :comments, :votes
   end
   root 'hacker_contrl#index'
 
