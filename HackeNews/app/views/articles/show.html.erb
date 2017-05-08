@@ -1,4 +1,11 @@
 
+<% if current_user %>
+	Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
+<% else %>
+	<%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+<% end %>
+   
+<%= yield %>
 
 <p>
   <strong>Title:</strong>
@@ -24,8 +31,9 @@
 <h2>Comments</h2>
 <%= render @article.comments %>
 
-<h2>Add a comment:</h2>
-<%= render 'comments/form' %>
+<% if session[:user_id] != nil%>
+	<h2>Add a comment:</h2>
+	<%= render 'comments/form' %>
+<% end %>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<!--%= link_to 'Edit', edit_article_path(@article) %--><%= link_to 'Back', articles_path %>
