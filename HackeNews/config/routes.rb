@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'hacker_contrl/index'
-  resources :articles
+  resources :articles do
+    resources :comments
+  end
   root 'hacker_contrl#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
