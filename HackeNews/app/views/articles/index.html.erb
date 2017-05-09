@@ -10,16 +10,15 @@
 
 <h1 align="center">Articles<br><br></h1>
  
-<table align="center">
+<table align="center" style="border-collapse: collapse;">
   <tr>
-    <th style="font-size: 2vh;">Title</th>
-    <th style="font-size: 2vh;">Text</th>
+    <th style="font-size: 2.5vh;">Title</th>
   </tr>
  
   <% @articles.each do |article| %>
-    <tr>
-      <td style="font-size: 2vh;" ><%= article.title %></td>
-      <td style="font-size: 2vh;"><%= article.text %></td>
+    
+    <tr style="border:2px solid;">
+      <td style="font-size: 2.5vh;" ><%= article.title %></td>
       <td style="font-size: 2vh;"><%= link_to 'Show', article_path(article) %></td>
       <% if session[:user_id] != nil && current_user['name'] == 'admin' %>
       <td style="font-size: 2vh;"><%= link_to 'Edit', edit_article_path(article) %></td>
