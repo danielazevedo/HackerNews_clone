@@ -8,9 +8,9 @@
 <%= yield %>
 
 
-<h1>Listing articles</h1>
+<h1 align="center">Listing articles</h1>
  
-<table>
+<table align="center">
   <tr>
     <th>Title</th>
     <th>Text</th>
@@ -21,14 +21,14 @@
       <td><%= article.title %></td>
       <td><%= article.text %></td>
       <td><%= link_to 'Show', article_path(article) %></td>
-      <!--td><%= link_to 'Edit', edit_article_path(article) %></td-->
-      <!--td><%= link_to 'Destroy', article_path(article),
+      <td><%= link_to 'Edit', edit_article_path(article) %></td>
+      <td><%= link_to 'Destroy', article_path(article),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
-    </tr-->
+    </tr>
   <% end %>
 </table>
 
 <% if session[:user_id] != nil %>
-	<%= link_to 'New article', new_article_path %>
+	<p align="center"><%= link_to 'New article', new_article_path %></p>
 <% end %>

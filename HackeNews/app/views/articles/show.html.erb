@@ -7,36 +7,44 @@
    
 <%= yield %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
- 
-<p>
+<h2 align="center">
+  <strong>Title</strong>
+</h2>
+ <p align="center"><%= @article.title %></p>
+
+<h2 align="center">
   <strong>Text:</strong>
-  <%= @article.text %>
-</p>
+</h2>
+<p align="center"><%= @article.text %></p>
 
  
-<h2>Votes</h2>
+<h2 align="center">Votes</h2>
 <!--%= render @article.votes%-->
 
 <% @article.votes.each do |c| %>
-  <p>
+  <p align="center">
     <strong>Username:</strong>
     <%= c.username %>
   </p>
  
 <% end %>
+	
 
+<% if  session[:user_id] != nil && current_user['name'] == 'admin'%>
+  <% @counter = 0%>
+  <% @article.comments.each do |c| %>
+	<% @counter = @counter +1 %>
+  <% end %>
+<h2 align="center">Number of Comments</h2>
+<p align="center"><%= @counter%></p>
+<% end %>
 
-
-<h2>Comments</h2>
+<h2 align="center">Comments</h2>
 <%= render @article.comments %>
 
 
 <% if session[:user_id] != nil%>
-	<h2>Add a comment:</h2>
+	<h2 align="center">Add a comment:</h2>
 	<%= render 'comments/form' %>
 
 	<% @flag = 0%>
@@ -50,11 +58,9 @@
          <%end%>
 
 	<% if @flag == 0%>
-		<h2>Add UpVote</h2>
+		<h2 align="center">Vote</h2>
 		<%= render 'vote/form' %>
 	<% end %>
 <% end %>
 
-<!--%= link_to 'Edit', edit_article_path(@article) %-->
-<!--%= link to 'Vote', new_article_vote_path %-->
-<%= link_to 'Back', articles_path %>
+<p align="center" ><%= link_to 'Back', articles_path , {:style=>'color:#000000;text-align:center'}%> </p>
