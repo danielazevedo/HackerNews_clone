@@ -18,35 +18,47 @@
 <p align="center"><%= @article.text %></p>
 
  
-<h2 align="center">Votes</h2>
-<!--%= render @article.votes%-->
+<div style="margin: 0 auto;border:1px solid black;width: 50vh;">
+	<h2 align="center">Votes</h2>
+	<%if @article.votes.size == 0%>
+		<p align="center" >NONE</p>
+	<% end %>
 
-<% @article.votes.each do |c| %>
-  <p align="center">
-    <strong>Username:</strong>
-    <%= c.username %>
-  </p>
+	<% @article.votes.each do |c| %>
+	  <p align="center">
+	    <strong>Username:</strong>
+	    <%= c.username %>
+	  </p>
  
-<% end %>
-	
+	<% end %>
+</div>	
 
 <% if  session[:user_id] != nil && current_user['name'] == 'admin'%>
   <% @counter = 0%>
   <% @article.comments.each do |c| %>
 	<% @counter = @counter +1 %>
   <% end %>
-<h2 align="center">Number of Comments</h2>
-<p align="center"><%= @counter%></p>
+
+<div style="margin: 0 auto;border:1px solid black;width: 50vh;margin-top: 5vh;">
+	<h2 align="center">Number of Comments</h2>
+	<p align="center"><%= @counter%></p>
+</div>
+
 <% end %>
 
-<h2 align="center">Comments</h2>
-<%= render @article.comments %>
-
-
+<div style="margin: 0 auto;border:1px solid black;width: 50vh;margin-top: 5vh;">
+	<h2 align="center">Comments</h2>
+	<%= render @article.comments %>
+	<%if @article.comments.size == 0%>
+		<p align="center" >NONE</p>
+	<% end %>
+</div>
 <% if session[:user_id] != nil%>
-	<h2 align="center">Add a comment:</h2>
-	<%= render 'comments/form' %>
-
+	
+	<div style="margin: 0 auto;border:1px solid black;width: 50vh;margin-top: 5vh;">
+		<h2 align="center">Add a comment:</h2>
+		<%= render 'comments/form' %>
+	</div>
 	<% @flag = 0%>
 	<% @article.votes.each do |c| %>        
                  <% current_user['name'] %>
@@ -58,7 +70,6 @@
          <%end%>
 
 	<% if @flag == 0%>
-		<h2 align="center">Vote</h2>
 		<%= render 'vote/form' %>
 	<% end %>
 <% end %>
