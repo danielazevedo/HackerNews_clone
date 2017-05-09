@@ -1,6 +1,6 @@
 # HackerNews_clone
 
-HackerNews_clone is a Hacker News clone (see https://news.ycombinator.com/) made using Ruby on Rails.
+HackerNews_clone is a Hacker News clone (see https://news.ycombinator.com/) made with Ruby on Rails.
 
 **Ruby version**<br />
 2.1.5p273<br />
