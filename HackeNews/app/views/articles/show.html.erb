@@ -17,13 +17,19 @@
   <%= @article.text %>
 </p>
 
-<p>
-  <strong>NumberComments:</strong>
-  <%= @article.numberComments %>
-</p>
  
 <h2>Votes</h2>
-<%= render @article.votes%>
+<!--%= render @article.votes%-->
+
+<% @article.votes.each do |c| %>
+  <p>
+    <strong>Username:</strong>
+    <%= c.username %>
+  </p>
+ 
+<% end %>
+
+
 
 <h2>Comments</h2>
 <%= render @article.comments %>
@@ -32,8 +38,21 @@
 <% if session[:user_id] != nil%>
 	<h2>Add a comment:</h2>
 	<%= render 'comments/form' %>
-	<h2>Add UpVote</h2>
-	<%= render 'vote/form' %>
+
+	<% @flag = 0%>
+	<% @article.votes.each do |c| %>        
+                 <% current_user['name'] %>
+                 <%c.username%>
+		<% if current_user['name'] == c.username %>
+			<%@flag = 1%>                 
+		<% end %>
+		<%@flag%>
+         <%end%>
+
+	<% if @flag == 0%>
+		<h2>Add UpVote</h2>
+		<%= render 'vote/form' %>
+	<% end %>
 <% end %>
 
 <!--%= link_to 'Edit', edit_article_path(@article) %-->
