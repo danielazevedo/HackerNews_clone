@@ -1,5 +1,15 @@
-<h1> New Article <h1>
+
+<% if current_user %>
+  Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
+<% else %>
+  <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+<% end %>
+
+<%= yield %>
+
+<h1 align="center"> New Article <h1>
 
 <%= render 'form' %>
-<%= link_to 'Back', articles_path %>
+
+<p align="center"><%= link_to 'Back', articles_path %></p>
 

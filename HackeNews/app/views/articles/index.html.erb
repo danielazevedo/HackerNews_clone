@@ -8,27 +8,29 @@
 <%= yield %>
 
 
-<h1 align="center">Listing articles</h1>
+<h1 align="center">Articles<br><br></h1>
  
 <table align="center">
   <tr>
-    <th>Title</th>
-    <th>Text</th>
+    <th style="font-size: 2vh;">Title</th>
+    <th style="font-size: 2vh;">Text</th>
   </tr>
  
   <% @articles.each do |article| %>
     <tr>
-      <td><%= article.title %></td>
-      <td><%= article.text %></td>
-      <td><%= link_to 'Show', article_path(article) %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %></td>
-      <td><%= link_to 'Destroy', article_path(article),
+      <td style="font-size: 2vh;" ><%= article.title %></td>
+      <td style="font-size: 2vh;"><%= article.text %></td>
+      <td style="font-size: 2vh;"><%= link_to 'Show', article_path(article) %></td>
+      <% if session[:user_id] != nil && current_user['name'] == 'admin' %>
+      <td style="font-size: 2vh;"><%= link_to 'Edit', edit_article_path(article) %></td>
+      <td style="font-size: 2vh;"><%= link_to 'Destroy', article_path(article),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
 
 <% if session[:user_id] != nil %>
-	<p align="center"><%= link_to 'New article', new_article_path %></p>
+	<p align="center" style='font-size: 3vh;color:#000000'><%= link_to 'New article', new_article_path %></p>
 <% end %>
